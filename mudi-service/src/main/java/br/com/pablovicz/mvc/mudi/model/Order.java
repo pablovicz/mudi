@@ -3,13 +3,38 @@ package br.com.pablovicz.mvc.mudi.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "ORDERS")
 public class Order {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column(name = "NAME")
 	private String name;
+	
+	@Column(name = "COST")
 	private BigDecimal cost;
+	
+	@Column(name = "DELIVERY_DATE")
 	private LocalDate deliveryDate;
+	
+	@Column(name = "URL_PRODUCT")
 	private String urlProduct;
+	
+	@Column(name = "URL_IMAGE")
 	private String urlImage;
+	
+	@Column(name = "DESCRIPTION")
 	private String description;
 	
 	
