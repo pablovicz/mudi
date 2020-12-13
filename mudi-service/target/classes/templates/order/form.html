@@ -1,0 +1,59 @@
+<html>
+
+<head>
+<meta charset="UTF-8" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+	crossorigin="anonymous">
+</head>
+<body>
+
+
+	<div class="container">
+
+		<div class="jumbotron mb-0">
+			<h1 class="display-4">New Order</h1>
+		</div>
+		
+		
+		<form action="/order/new" method="POST">
+		<div>
+			<label for="productName">Product</label>
+			<input name="productName" placeholder="Product Name"/>
+			<small>Enter the product name.</small>
+		</div>
+		<div>
+			<label for="urlProduct">URL</label>
+			<input name="urlProduct" placeholder="Product url"/>
+			<small>Search the website for the product you want and enter the page url here.</small>
+		</div>
+		<div>
+			<label for="urlImage">URL</label>
+			<input name="urlImage" placeholder="Image url"/>
+			<small>Search for a good product image and enter the page url here for to help buyers</small>
+		</div>
+		<div>
+			<label for="description">Description</label>
+			<textarea name="description" placeholder="Enter some important  details to help buyers"></textarea>
+		</div>
+		<button type="submit">Register</button>
+		
+		
+		</form>
+		
+		
+		
+		
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

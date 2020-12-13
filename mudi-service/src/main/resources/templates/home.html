@@ -13,48 +13,47 @@
 
 	<div class="container">
 
-		<div>
-			<h1>Meus Pedidos</h1>
+		<div class="jumbotron mb-0">
+			<h1 class="display-4">My Orders</h1>
 		</div>
 
 		<nav
-			class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between mb-3">
+			class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link active" href="">Todos</a> <a
-					class="nav-item nav-link" href="">Aguardando</a> <a
-					class="nav-item nav-link" href="">Aprovado</a> <a
-					class="nav-item nav-link" href="">Entregue</a>
+				<a class="nav-item nav-link active" href="">All</a> <a
+					class="nav-item nav-link" href="">Waiting</a> <a
+					class="nav-item nav-link" href="">Approved</a> <a
+					class="nav-item nav-link" href="">Delivered</a>
 			</div>
-			<a href="/pedido/formulario">
-				<button class="btn btn-outline-secondary my-2 my-sm-0">Novo</button>
+			<a href="/order/form">
+				<button class="btn btn-outline-secondary my-2 my-sm-0">New</button>
 			</a>
 
 
 		</nav>
 		<div class="card" th:each="order : ${orders}">
-			<div class="card-header" th:text="${order.name}">Nome do
-				produto</div>
+			<div class="card-header" th:text="${order.name}">Product Name</div>
 
 			<div class="card-body">
 				<div class="row">
 					<div class="col-12 col-sm-8 mb-3">
 						<div class="row">
 							<div class="col-md-5">
-								Valor: R$ <span th:text="${order.cost}">200,99</span>
+								Price: U$ <span th:text="${order.price}">200,99</span>
 							</div>
 							<div class="col-md-7">
-								Data da entrega: <span th:text="${order.deliveryDate}">10/02/2020</span>
+								Delivery Date: <span th:text="${order.deliveryDate}">10/02/2020</span>
 							</div>
 						</div>
-						<div>Produto</div>
+						<div>Product</div>
 						<div>
 							<input class="form-control" th:value="${order.urlProduct}"
 								value="url do produto" />
 						</div>
 
-						<div>Descrição</div>
+						<div>Description</div>
 						<div>
-							<textarea class="form-control" th:text="${order.description}">descricão do pedido</textarea>
+							<textarea class="form-control" th:text="${order.description}">product description</textarea>
 						</div>
 					</div>
 
