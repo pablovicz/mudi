@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.pablovicz.mvc.mudi.business.OrderBusiness;
 import br.com.pablovicz.mvc.mudi.model.Order;
+import br.com.pablovicz.mvc.mudi.model.OrderStatus;
 import br.com.pablovicz.mvc.mudi.repository.OrderRepository;
 
 @Service
@@ -24,6 +25,12 @@ public class OrderBusinessImpl implements OrderBusiness{
 	public void save(Order order) {
 		
 		orderRepository.save(order);
+	}
+
+	
+	public List<Order> getByStatus(OrderStatus status) {
+		
+		return orderRepository.findByStatus(status);
 	}
 
 }

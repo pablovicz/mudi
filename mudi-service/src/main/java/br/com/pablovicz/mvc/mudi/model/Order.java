@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,6 +37,17 @@ public class Order {
 
 	@Column(name = "DESCRIPTION")
 	private String description;
+
+	@Enumerated(EnumType.STRING)
+	private OrderStatus status;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -83,4 +96,13 @@ public class Order {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	public OrderStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(OrderStatus status) {
+		this.status = status;
+	}
+
 }
