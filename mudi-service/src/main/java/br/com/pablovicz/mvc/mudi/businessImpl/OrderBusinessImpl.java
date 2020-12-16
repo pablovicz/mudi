@@ -11,26 +11,34 @@ import br.com.pablovicz.mvc.mudi.model.OrderStatus;
 import br.com.pablovicz.mvc.mudi.repository.OrderRepository;
 
 @Service
-public class OrderBusinessImpl implements OrderBusiness{
-	
+public class OrderBusinessImpl implements OrderBusiness {
+
 	@Autowired
 	private OrderRepository orderRepository;
-	
-	
-	public List<Order> getAll(){
-		
+
+	public List<Order> getAll() {
+
 		return (List<Order>) orderRepository.findAll();
 	}
-	
+
 	public void save(Order order) {
-		
+
 		orderRepository.save(order);
 	}
 
-	
 	public List<Order> getByStatus(OrderStatus status) {
-		
+
 		return orderRepository.findByStatus(status);
+	}
+
+	public List<Order> getByStatusAndUser(OrderStatus status, String username) {
+
+		return orderRepository.findByStatusAndUser(status, username);
+	}
+
+	public List<Order> getAllByUser(String username) {
+
+		return orderRepository.findAllByUser(username);
 	}
 
 }

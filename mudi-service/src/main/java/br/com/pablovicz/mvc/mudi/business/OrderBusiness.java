@@ -9,8 +9,14 @@ public interface OrderBusiness {
 	
 	public List<Order> getAll();
 	
+	public List<Order> getAllByUser(String username);
+	
 	public void save(Order order);
 
 	public List<Order> getByStatus(OrderStatus status);
+	
+	public List<Order> getByStatusAndUser(OrderStatus status, String username);
+	
+	
 
 }
