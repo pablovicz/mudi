@@ -3,6 +3,7 @@ package br.com.pablovicz.mvc.mudi.businessImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.pablovicz.mvc.mudi.business.OrderBusiness;
@@ -26,9 +27,9 @@ public class OrderBusinessImpl implements OrderBusiness {
 		orderRepository.save(order);
 	}
 
-	public List<Order> getByStatus(OrderStatus status) {
+	public List<Order> getByStatus(OrderStatus status, Pageable page) {
 
-		return orderRepository.findByStatus(status);
+		return orderRepository.findByStatus(status, page);
 	}
 
 	public List<Order> getByStatusAndUser(OrderStatus status, String username) {
