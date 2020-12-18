@@ -49,7 +49,7 @@ public class OrderController {
 		order.setUser(user);
 		orderBusiness.save(order);
 
-		return "redirect:/home";
+		return "redirect:/user/order";
 	}
 
 }

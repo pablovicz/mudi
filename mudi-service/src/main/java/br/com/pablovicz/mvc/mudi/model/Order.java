@@ -30,6 +30,9 @@ public class Order {
 
 	@Column(name = "DELIVERY_DATE")
 	private LocalDate deliveryDate;
+	
+	@Column(name = "ORDER_DATE")
+	private LocalDate orderDate;
 
 	@Column(name = "URL_PRODUCT")
 	private String urlProduct;
@@ -84,6 +87,14 @@ public class Order {
 
 	public void setDeliveryDate(LocalDate deliveryDate) {
 		this.deliveryDate = deliveryDate;
+	}
+	
+	public LocalDate getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(LocalDate orderDate) {
+		this.orderDate = orderDate;
 	}
 
 	public String getUrlProduct() {

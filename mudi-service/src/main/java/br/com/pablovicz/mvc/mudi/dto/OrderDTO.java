@@ -59,7 +59,7 @@ public class OrderDTO {
 		order.setUrlProduct(urlProduct);
 		order.setUrlImage(urlImage);
 		order.setDescription(description);
-		order.setDeliveryDate(LocalDate.now());
+		order.setOrderDate(LocalDate.now());
 		order.setStatus(OrderStatus.WAITING);
 
 		return order;

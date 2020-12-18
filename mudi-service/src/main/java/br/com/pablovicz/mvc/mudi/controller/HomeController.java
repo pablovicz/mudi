@@ -22,9 +22,10 @@ public class HomeController {
 	@GetMapping
 	public String home(Model model) {
 
-		Sort sort = Sort.by("deliveredDate").descending();
+		Sort sort = Sort.by("deliveryDate").descending();
 
 		PageRequest page = PageRequest.of(0, 10, sort);
+		
 
 		model.addAttribute("orders", orderBusiness.getByStatus(OrderStatus.DELIVERED, page));
 		return "home";
