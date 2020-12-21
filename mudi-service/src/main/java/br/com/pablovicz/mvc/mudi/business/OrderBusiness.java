@@ -1,6 +1,7 @@
 package br.com.pablovicz.mvc.mudi.business;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Pageable;
 
@@ -12,6 +13,8 @@ public interface OrderBusiness {
 	public List<Order> getAll();
 	
 	public List<Order> getAllByUser(String username);
+	
+	public Optional<Order> getById(Long id);
 	
 	public void save(Order order);
 

@@ -1,6 +1,7 @@
 package br.com.pablovicz.mvc.mudi.businessImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -40,6 +41,11 @@ public class OrderBusinessImpl implements OrderBusiness {
 	public List<Order> getAllByUser(String username) {
 
 		return orderRepository.findAllByUser(username);
+	}
+
+	public Optional<Order> getById(Long id) {
+		
+		return orderRepository.findById(id);
 	}
 
 }

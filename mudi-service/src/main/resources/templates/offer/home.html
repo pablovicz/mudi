@@ -1,0 +1,134 @@
+<html>
+
+<head th:replace="~{base :: head}"></head>
+<body onload="onLoad()">
+	<div th:replace="~{base :: head-logout}"></div>
+
+	<div class="container" id="offers">
+
+		<div th:replace="~{base :: title('Make your Offer')}"></div>
+
+		<div class="card mb-3" v-for="order in orders">
+
+			<div class="card-header alert-dark">{{ order.name }}</div>
+
+			<div class="card-body">
+				<div class="row">
+					<div class="col-12 col-sm-8 mb-3">
+						<div class="mt-2">Product</div>
+						<div>
+							<a v-bind:href="order.urlProduct">{{order.name}}</a>
+
+						</div>
+
+						<div class="mt-2">Description</div>
+						<div>
+							<textarea disabled class="mb-2 form-control">{{order.description}}</textarea>
+						</div>
+						<div class="row mt-4">
+							<div class="col-md-5">
+								Price: <input
+									v-bind:class="{'is-invalid': order.errors.price!==''}"
+									class="form-control" v-model="order.price" />
+								<div class="invalid-feedback" v-if="order.errors.price">
+									{{order.errors.price}}</div>
+							</div>
+							<div class="col-md-7">
+								Delivery Date: <input
+									v-bind:class="{'is-invalid': order.errors.deliveredDate !==''}"
+									class="form-control" v-model="order.deliveryDate" />
+								<div class="invalid-feedback" v-if="order.errors.deliveredDate">
+									{{order.errors.deliveryDate}}</div>
+							</div>
+
+						</div>
+						<div class="mt-2">
+							<label>Note</label>
+							<textarea class="mb-2 form-control" v-model="order.note"></textarea>
+						</div>
+						<button class="btn btn-success mt-3" v-if="order.offerSent">Offer
+							Sent</button>
+						<button class="btn btn-primary mt-3"
+							v-on:click="registerOffer(order)" v-else>Register</button>
+					</div>
+
+
+
+					<div class="col-12 col-sm-4">
+						<div>
+							<img class="img-thumbnail" v-bind:src="order.urlImage" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		function onLoad() {
+			var app = new Vue(
+					{
+						el : '#offers',
+						data : {
+							orders : [],
+						},
+						mounted() {
+							
+							axios
+								.get('http://localhost:8080/api/orders/waiting')
+								.then(response => {
+									
+									response.data.forEach(order =>  {
+										order.offerSent = false;
+										order.errors = {
+												price : '',
+												deliveredDate : ''
+										};
+									});
+									
+									this.orders = response.data;
+									
+								})
+							
+						},
+						
+						methods: {
+							
+							registerOffer: function(order){
+								
+								
+								order.errors = {
+										price: '',
+										deliveredDate: ''
+										
+								}
+								
+								axios
+									.post('http://localhost:8080/api/offers', {
+										orderId: order.id,
+										price: order.price,
+										deliveredDate: order.deliveryDate,
+										note: order.note,
+									})
+									.then(response => order.offerSent = true)
+									.catch( error => {
+										error.response.data.errors.forEach(error => {
+											order.errors[error.field] = error.defaultMessage;
+											
+										});
+										
+									});
+							}
+							
+						}
+
+					});
+		}
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</body>
+
+</html>
