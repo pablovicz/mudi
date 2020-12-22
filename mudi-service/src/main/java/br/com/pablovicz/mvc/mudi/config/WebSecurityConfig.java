@@ -1,4 +1,4 @@
-package br.com.pablovicz.mvc.mudi;
+package br.com.pablovicz.mvc.mudi.config;
 
 import javax.sql.DataSource;
 

@@ -63,7 +63,7 @@ public class Order {
 	@JsonIgnore
 	private User user;
 	
-	@OneToMany(cascade = CascadeType.ALL , mappedBy = "order", fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL , mappedBy = "order", fetch = FetchType.EAGER)
 	@JsonIgnore
 	private List<Offer> offers;
 
